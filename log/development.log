@@ -3650,3 +3650,103 @@ Processing by SearchesController#index as JSON
   [1m[36mCountry Load (1.0ms)[0m  [1mSELECT "countries".* FROM "countries" WHERE (name LIKE '%z%')[0m
   [1m[35mResort Load (1.0ms)[0m  SELECT "resorts".* FROM "resorts" WHERE (name LIKE '%z%')
 Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-08 16:08:18 +0200
+Processing by SearchesController#index as HTML
+  [1m[36mResort Load (1.0ms)[0m  [1mSELECT "resorts".* FROM "resorts" [0m
+  Rendered searches/index.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 257ms (Views: 242.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /bootstrap.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /application.css - 304 Not Modified (62ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /custom.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/countries.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /countries.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /scaffolds.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/resorts.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /resorts.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /searches.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/ui-lightness/jquery-ui-1.10.2.custom.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /ui-lightness/jquery-ui-1.10.2.custom.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/ui-lightness/jquery-ui-1.10.2.custom.min.css?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /ui-lightness/jquery-ui-1.10.2.custom.min.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /jquery.js - 304 Not Modified (31ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /bootstrap.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/countries.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /countries.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/jquery-ui-1.10.2.custom.min.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /jquery-ui-1.10.2.custom.min.js - 304 Not Modified (27ms)
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /jquery-ui.min.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/resorts.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /resorts.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/searches.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /searches.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /application.js - 304 Not Modified (78ms)
+
+
+Started GET "/assets/ui-lightness/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" for 127.0.0.1 at 2013-04-08 16:08:19 +0200
+Served asset /ui-lightness/images/ui-bg_highlight-soft_100_eeeeee_1x100.png - 304 Not Modified (3ms)
+
+
+Started GET "/searches.json?term=z" for 127.0.0.1 at 2013-04-08 16:08:22 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"z"}
+  [1m[35mCountry Load (0.0ms)[0m  SELECT "countries".* FROM "countries" WHERE (lower(name) LIKE '%z%')
+  [1m[36mResort Load (1.0ms)[0m  [1mSELECT "resorts".* FROM "resorts" WHERE (lower(name) LIKE '%z%')[0m
+Completed 200 OK in 16ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/searches.json?term=Z" for 127.0.0.1 at 2013-04-08 16:08:23 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"Z"}
+  [1m[35mCountry Load (0.0ms)[0m  SELECT "countries".* FROM "countries" WHERE (lower(name) LIKE '%z%')
+  [1m[36mResort Load (1.0ms)[0m  [1mSELECT "resorts".* FROM "resorts" WHERE (lower(name) LIKE '%z%')[0m
+Completed 200 OK in 4ms (Views: 0.0ms | ActiveRecord: 1.0ms)
