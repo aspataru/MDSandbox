@@ -3593,3 +3593,60 @@ Completed 200 OK in 16ms (Views: 1.0ms | ActiveRecord: 1.0ms)
 
 Started GET "/assets/ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.png" for 127.0.0.1 at 2013-04-08 15:12:50 +0200
 Served asset /ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.png - 304 Not Modified (6ms)
+
+
+Started GET "/searches.json?term=v" for 127.0.0.1 at 2013-04-08 15:58:11 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"v"}
+  [1m[35mCountry Load (0.0ms)[0m  SELECT "countries".* FROM "countries" WHERE (name LIKE '%v%')
+  [1m[36mResort Load (0.0ms)[0m  [1mSELECT "resorts".* FROM "resorts" WHERE (name LIKE '%v%')[0m
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/searches.json?term=ver" for 127.0.0.1 at 2013-04-08 15:58:11 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"ver"}
+  [1m[35mCountry Load (0.0ms)[0m  SELECT "countries".* FROM "countries" WHERE (name LIKE '%ver%')
+  [1m[36mResort Load (0.0ms)[0m  [1mSELECT "resorts".* FROM "resorts" WHERE (name LIKE '%ver%')[0m
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/searches.json?term=er" for 127.0.0.1 at 2013-04-08 16:01:55 +0200
+Connecting to database specified by database.yml
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"er"}
+  [1m[36mCountry Load (0.0ms)[0m  [1mSELECT "countries".* FROM "countries" WHERE (name LIKE '%er%')[0m
+  [1m[35mResort Load (0.0ms)[0m  SELECT "resorts".* FROM "resorts" WHERE (name LIKE '%er%')
+Completed 200 OK in 74ms (Views: 0.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/searches.json?term=ze" for 127.0.0.1 at 2013-04-08 16:01:56 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"ze"}
+  [1m[36mCountry Load (0.0ms)[0m  [1mSELECT "countries".* FROM "countries" WHERE (name LIKE '%ze%')[0m
+  [1m[35mResort Load (0.0ms)[0m  SELECT "resorts".* FROM "resorts" WHERE (name LIKE '%ze%')
+Completed 200 OK in 4ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/searches.json?term=er" for 127.0.0.1 at 2013-04-08 16:01:59 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"er"}
+  [1m[36mCountry Load (0.0ms)[0m  [1mSELECT "countries".* FROM "countries" WHERE (name LIKE '%er%')[0m
+  [1m[35mResort Load (1.0ms)[0m  SELECT "resorts".* FROM "resorts" WHERE (name LIKE '%er%')
+Completed 200 OK in 6ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/searches.json?term=erb" for 127.0.0.1 at 2013-04-08 16:02:02 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"erb"}
+  [1m[36mCountry Load (0.0ms)[0m  [1mSELECT "countries".* FROM "countries" WHERE (name LIKE '%erb%')[0m
+  [1m[35mResort Load (1.0ms)[0m  SELECT "resorts".* FROM "resorts" WHERE (name LIKE '%erb%')
+Completed 200 OK in 2ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/searches.json?term=Z" for 127.0.0.1 at 2013-04-08 16:02:04 +0200
+Processing by SearchesController#index as JSON
+  Parameters: {"term"=>"Z"}
+  [1m[36mCountry Load (1.0ms)[0m  [1mSELECT "countries".* FROM "countries" WHERE (name LIKE '%z%')[0m
+  [1m[35mResort Load (1.0ms)[0m  SELECT "resorts".* FROM "resorts" WHERE (name LIKE '%z%')
+Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 2.0ms)
