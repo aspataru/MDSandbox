@@ -1,51 +1,59 @@
 <script type="text/javascript">
 		$(function() {
 
-	// Below is the name of the textfield that will be autocomplete
-	$('#select_origin').autocomplete({
-	// This shows the min length of charcters that must be typed before the autocomplete looks for a match.
-	minLength: 1,
-	// This is the source of the auocomplete suggestions. In this case a list of names from the people controller, in JSON format.
-	source: '<%= searches_path(:json) %>',
-		// This updates the textfield when you move the updown the suggestions list, with your keyboard. In our case it will reflect the same value that you see in the suggestions which is the person.given_name.
-		focus: function(event, ui) {
-		$('#select_origin').val(ui.item.name);
-		//return false;
+   $( "#select_origin" ).autocomplete({
+   	source: function( request, response ){
+   		$.ajax({
+   			url: "<%= searches_path(:json)%>",
+   			dataType: "json",
+   			data: {
+               term : request.term,
+               //country_id : $("#country_id").val(),
+               //cat_id: $("#cat_id2").val(),
+               //questionItems:$("#questionItem").is(':checked'),
+               //isactive:$("input[name='isactive']:checked").val(),
+
+               //isInStock:$("input[name='isInStock']:checked").val(),
+               //isAutoComplete:true
+            },
+            success: function(data){
+               response($.map(data, function(item) {
+                  return {
+                     label: __highlight(item.name, request.term),
+                     value: item.name
+                  };
+               }));
+            }
+		   })
 		},
-		// Once a value in the drop down list is selected, do the following:
-		select: function(event, ui) {
-		// place the person.given_name value into the textfield called 'select_origin'...
-		$('#select_origin').val(ui.item.name);
-		// and place the person.id into the hidden textfield called 'link_origin_id'.
-		$('#select_id').val(ui.item.id);
-		return false;
-		}
-		})
-		// The below code is straight from the jQuery example. It formats what data is displayed in the dropdown box, and can be customized.
-		.data( "autocomplete" )._renderItem = function( ul, item ) {
-		return $( "<li></li>" )
-		.data( "item.autocomplete", item )
-		// For now which just want to show the person.given_name in the list.
-		.append( "<a>" + item.name + "</a>" )
-		.appendTo( ul );
-		};
-		});
-		
-		// .data( "autocomplete" )._renderItem = function( ul, item) {
-          // var re = new RegExp("^" + this.term) ;
-          // var t = item.name.replace(re,"<span style='font-weight:bold;color:Blue;'>" + 
-                  // this.term + 
-                  // "</span>");
-          // return $( "<li></li>" )
-              // .data( "item.autocomplete", item )
-              // .append( $( "<a></a>" ).html(t) )
-              // .appendTo( ul );
-      // };
-   // });
-		
+		open: function(){
+
+			   $(this).removeClass("wait");
+			},
+
+		search: function(event, ui) {
+        $(this).addClass("wait");
+      },
+      minLength: 1
+	}
+	).data( "autocomplete" )._renderItem = function( ul, item ) {
+                  // only change here was to replace .text() with .html()
+                  return $( "<li></li>" )
+                        .data( "item.autocomplete", item )
+                        .append( $( "<a></a>" ).html(item.label) )
+                        .appendTo( ul );
+                };
+});
+
+function __highlight(s, t) {
+  var matcher = new RegExp("("+$.ui.autocomplete.escapeRegex(t)+")", "ig" );
+ //return s.replace(matcher, "<strong>$1</strong>");
+ return s.replace(matcher, "<span class = \"highlight_text\">$1</span>");
+}
+
 </script>
 
-<h1>Search on Countries & Resorts</h1>
+<h1>Search Countries & Resorts</h1>
 
 <div class="center hero-unit">
 	Search:
