@@ -6,8 +6,8 @@ class SearchesController < ApplicationController
     #if params[:term]
     if params[:term]
 
-      countries = Country.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"], :select => "name, id")
-      resorts = Resort.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"], :select => "name, id")
+      countries = Country.find(:all,:conditions => ['lower(name) LIKE ?', "%#{params[:term].downcase}%"], :select => "name, id")
+      resorts = Resort.find(:all,:conditions => ['lower(name) LIKE ?', "%#{params[:term].downcase}%"], :select => "name, id")
 
       @results = []
       
