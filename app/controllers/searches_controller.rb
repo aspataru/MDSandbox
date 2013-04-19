@@ -6,20 +6,33 @@ class SearchesController < ApplicationController
     #if params[:term]
     if params[:term]
 
-      @countries = Country.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"])
-      @resorts = Resort.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"])
-     
+      countries = Country.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"], :select => "name, id")
+      resorts = Resort.find(:all,:conditions => ['name LIKE ?', "%#{params[:term]}%"], :select => "name, id")
+
       @results = []
-     
-     @resorts.each do |resort|
-       @results.push resort
-     end
-     
-     @countries.each do |country|
-       @results.push country
-     end
-     
       
+      countries.each do |c|
+        jsc = c.to_json
+        jscH = JSON.parse(jsc)
+        jscH[:type] = 'c'
+        @results << jscH
+      end
+      resorts.each do |r|
+        jsr = r.to_json
+        jsrH = JSON.parse(jsr)
+        jsrH[:type] = 'r'
+        @results << jsrH
+      end
+
+
+    # resorts.each do |resort|
+    # @results.push resort
+    # end
+#     
+    # countries.each do |country|
+    # @results.push country
+    # end
+
     else
 
       @results = Resort.all
@@ -29,7 +42,7 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       # Here is where you can specify how to handle the request for "/search.json"
-      format.json { render :json => @results.to_json }
+      format.json { render :json => @results }
     end
   end
 

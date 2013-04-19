@@ -20,14 +20,26 @@
                response($.map(data, function(item) {
                   return {
                      label: __highlight(item.name, request.term),
-                     value: item.name
+                     value: item.name,
+                     type: item.type,
+                     id: item.id,
                   };
                }));
             }
 		   })
 		},
+		select: function( event, ui ) {
+			if (ui.item.type == "c") {
+				$( "#country_id" ).val(ui.item.id);
+				$( "#resort_id" ).val("");
+			}
+			else
+			{
+				$( "#resort_id" ).val(ui.item.id);
+				$( "#country_id" ).val("");
+			}
+		},
 		open: function(){
-
 			   $(this).removeClass("wait");
 			},
 
@@ -58,5 +70,7 @@ function __highlight(s, t) {
 <div class="center hero-unit">
 	Search:
 	<input id="select_origin" />
-	<input id="select_id" name = "select[id]" type="hidden" />
+	<!--<input id="select_id" name = "select[id]" type="hidden" />-->
+	<input id="country_id"/>
+	<input id="resort_id"/>
 </div>
